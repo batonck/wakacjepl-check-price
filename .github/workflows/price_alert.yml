@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: '0 * * * *' # co godzinę
   workflow_dispatch:
+    inputs:
+      date_from:
+        description: 'Start date (YYYY-MM-DD)'
+        required: false
+        default: '2025-07-01'
+      date_to:
+        description: 'End date (YYYY-MM-DD)'
+        required: false
+        default: '2025-09-30'
 
 jobs:
   run-alert:
@@ -22,5 +31,7 @@ jobs:
       - name: Run price alert script
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DATE_FROM: ${{ github.event.inputs.date_from }}
+          DATE_TO: ${{ github.event.inputs.date_to }}
         run: |
           python .github/workflows/price_alert_action.py
