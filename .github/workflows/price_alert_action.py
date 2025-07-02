@@ -19,6 +19,12 @@ def get_price_from_page(url):
                     continue
     raise Exception('Nie znaleziono ceny na stronie!')
 
+def update_url_date_range(url, date_from, date_to):
+    # Replace od-YYYY-MM-DD and do-YYYY-MM-DD in the url
+    url = re.sub(r'od-\d{4}-\d{2}-\d{2}', f'od-{date_from}', url)
+    url = re.sub(r'do-\d{4}-\d{2}-\d{2}', f'do-{date_to}', url)
+    return url
+
 def send_discord_alert(webhook_url, offer_url, price):
     content = f'Cena wycieczki spadła do {price} PLN!\nOferta: {offer_url}'
     data = {"content": content}
@@ -34,16 +40,19 @@ def main():
     hotels = config['hotels']
     price_limit = config['price_limit']
     webhook_url = os.environ.get('DISCORD_WEBHOOK_URL', config.get('discord_webhook_url'))
+    date_from = os.environ.get('DATE_FROM', config.get('date_from'))
+    date_to = os.environ.get('DATE_TO', config.get('date_to'))
     for offer_url in hotels:
+        url = update_url_date_range(offer_url, date_from, date_to)
         try:
-            price = get_price_from_page(offer_url)
-            print(f'Aktualna cena dla {offer_url}: {price} PLN')
+            price = get_price_from_page(url)
+            print(f'Aktualna cena dla {url}: {price} PLN')
             if price <= price_limit:
-                send_discord_alert(webhook_url, offer_url, price)
+                send_discord_alert(webhook_url, url, price)
             else:
                 print(f'Cena powyżej progu {price_limit} PLN.')
         except Exception as e:
-            print(f'Błąd dla {offer_url}: {e}')
+            print(f'Błąd dla {url}: {e}')
 
 if __name__ == '__main__':
     main()
