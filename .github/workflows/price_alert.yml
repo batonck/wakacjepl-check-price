@@ -8,11 +8,11 @@ on:
       date_from:
         description: 'Start date (YYYY-MM-DD)'
         required: false
-        default: '2025-07-01'
+        default: ''
       date_to:
         description: 'End date (YYYY-MM-DD)'
         required: false
-        default: '2025-09-30'
+        default: ''
 
 jobs:
   run-alert:

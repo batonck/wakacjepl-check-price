@@ -4,6 +4,12 @@ import json
 import re
 import os
 
+def get_env_or_config(key, config):
+    value = os.environ.get(key.upper())
+    if value is not None and value.strip() != '':
+        return value
+    return config.get(key.lower())
+
 def get_price_from_page(url):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -40,8 +46,8 @@ def main():
     hotels = config['hotels']
     price_limit = config['price_limit']
     webhook_url = os.environ.get('DISCORD_WEBHOOK_URL', config.get('discord_webhook_url'))
-    date_from = os.environ.get('DATE_FROM', config.get('date_from'))
-    date_to = os.environ.get('DATE_TO', config.get('date_to'))
+    date_from = get_env_or_config('DATE_FROM', config)
+    date_to = get_env_or_config('DATE_TO', config)
     for offer_url in hotels:
         url = update_url_date_range(offer_url, date_from, date_to)
         try:
