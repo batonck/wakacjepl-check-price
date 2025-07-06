@@ -34,6 +34,12 @@ def update_url_date_range(url, date_from, date_to):
     url = re.sub(r'do-\d{4}-\d{2}-\d{2}', f'do-{date_to}', url)
     return url
 
+def update_url_catering(url, catering):
+    # Zamień fragment cateringowy w URL na podstawie wartości catering
+    # Obsługuje najczęstsze przypadki: all-inclusive, HB, BB, FB, AI, itp.
+    url = re.sub(r',(all-inclusive|hb|bb|fb|ai),', f',{catering.lower()},', url, flags=re.IGNORECASE)
+    return url
+
 def send_discord_alert(webhook_url, offer_url, price, catering=None):
     content = f'Cena wycieczki spadła do {price} PLN!'
     if catering:
@@ -66,6 +72,7 @@ def main():
         price_limit = hotel_info['price_limit']
         catering = hotel_info['catering']
         url = update_url_date_range(offer_url, date_from, date_to)
+        url = update_url_catering(url, catering)
         try:
             price = get_price_from_page(url)
             if price is None:
