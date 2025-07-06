@@ -13,6 +13,9 @@ def get_env_or_config(key, config):
 def get_price_from_page(url):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
+    # Check for no offers message
+    if 'znaleźliśmy ofert, które spełniają wszystkie wybrane kryteria' in soup.get_text():
+        return None
     for tag in soup.find_all(['span', 'div']):
         text = tag.get_text(strip=True)
         if text.endswith('zł'):
@@ -40,6 +43,15 @@ def send_discord_alert(webhook_url, offer_url, price):
     else:
         print(f'Błąd przy wysyłaniu na Discord: {response.status_code} {response.text}')
 
+def send_discord_no_offer_alert(webhook_url, offer_url):
+    content = f'Brak ofert spełniających kryteria na ten moment. Sprawdź ponownie później.\nLink: {offer_url}'
+    data = {"content": content}
+    response = requests.post(webhook_url, json=data)
+    if response.status_code == 204:
+        print('Wysłano powiadomienie o braku ofert na Discord!')
+    else:
+        print(f'Błąd przy wysyłaniu na Discord: {response.status_code} {response.text}')
+
 def main():
     with open('config.json', 'r', encoding='utf-8') as f:
         config = json.load(f)
@@ -51,6 +63,9 @@ def main():
         url = update_url_date_range(offer_url, date_from, date_to)
         try:
             price = get_price_from_page(url)
+            if price is None:
+                send_discord_no_offer_alert(webhook_url, url)
+                continue
             print(f'Aktualna cena dla {url}: {price} PLN')
             if price <= price_limit:
                 send_discord_alert(webhook_url, url, price)
