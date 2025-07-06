@@ -40,8 +40,20 @@ def update_url_catering(url, catering):
     url = re.sub(r',(all-inclusive|hb|bb|fb|ai),', f',{catering.lower()},', url, flags=re.IGNORECASE)
     return url
 
+def extract_hotel_name_from_url(url):
+    # Pobierz fragment po 'wczasy/' i przed '-h' lub '/?'
+    match = re.search(r'wczasy/([^/?]+?)-h\d+', url)
+    if match:
+        return match.group(1).replace('-', ' ').title()
+    # fallback: spróbuj pobrać po 'wczasy/' do pierwszego '/'
+    match = re.search(r'wczasy/([^/?]+)', url)
+    if match:
+        return match.group(1).replace('-', ' ').title()
+    return 'Nieznany Hotel'
+
 def send_discord_alert(webhook_url, offer_url, price, catering=None):
-    content = f'Cena wycieczki spadła do {price} PLN!'
+    hotel_name = extract_hotel_name_from_url(offer_url)
+    content = f'Cena wycieczki do **{hotel_name}** spadła do {price} PLN!'
     if catering:
         content += f' ({catering})'
     content += f'\nOferta: {offer_url}'
