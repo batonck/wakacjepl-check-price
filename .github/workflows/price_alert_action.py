@@ -44,11 +44,10 @@ def main():
     with open('config.json', 'r', encoding='utf-8') as f:
         config = json.load(f)
     hotels = config['hotels']
-    price_limit = config['price_limit']
     webhook_url = os.environ.get('DISCORD_WEBHOOK_URL', config.get('discord_webhook_url'))
     date_from = get_env_or_config('DATE_FROM', config)
     date_to = get_env_or_config('DATE_TO', config)
-    for offer_url in hotels:
+    for offer_url, price_limit in hotels.items():
         url = update_url_date_range(offer_url, date_from, date_to)
         try:
             price = get_price_from_page(url)
