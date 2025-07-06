@@ -35,3 +35,15 @@ jobs:
           DATE_TO: ${{ github.event.inputs.date_to }}
         run: |
           python .github/workflows/price_alert_action.py
+
+  notify-failure:
+    runs-on: ubuntu-latest
+    needs: run-alert
+    if: failure()
+    steps:
+      - name: Send Discord notification on failure
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          PAYLOAD="{\"content\": \"❌ WakacjePL Price Alert pipeline failed! See: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}"
+          curl -H "Content-Type: application/json" -X POST -d "$PAYLOAD" "$DISCORD_WEBHOOK_URL"
