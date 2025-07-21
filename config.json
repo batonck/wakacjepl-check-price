@@ -32,7 +32,10 @@
     "https://www.wakacje.pl/wczasy/regnum-carya-golf-spa-resort-h25111/?od-2025-07-06,do-2025-09-30,samolotem,all-inclusive,tanio&src=fromFilters": {"price_limit": 8000, "catering": "all-inclusive"},
     "https://www.wakacje.pl/wczasy/titanic-mardan-palace-h25099/?od-2025-07-06,do-2025-09-30,samolotem,all-inclusive,tanio&src=fromFilters": {"price_limit": 8000, "catering": "all-inclusive"},
     "https://www.wakacje.pl/wczasy/granada-luxury-belek-h32093/?od-2025-07-06,do-2025-09-30,samolotem,all-inclusive,tanio&src=fromFilters": {"price_limit": 8000, "catering": "all-inclusive"},
-    "https://www.wakacje.pl/wczasy/alkyna-lifestyle-beach-resort-ex-la-grotta-verde-h15420/?od-2025-07-06,do-2025-09-30,samolotem,all-inclusive,tanio&src=fromFilters": {"price_limit": 8000, "catering": "all-inclusive"}
+    "https://www.wakacje.pl/wczasy/alkyna-lifestyle-beach-resort-ex-la-grotta-verde-h15420/?od-2025-07-06,do-2025-09-30,samolotem,all-inclusive,tanio&src=fromFilters": {"price_limit": 8000, "catering": "all-inclusive"},
+    "https://www.wakacje.pl/wczasy/nirvana-cosmopolitan-ex-kervansaray-lara-h11220/?tanio,od-2025-07-14,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
+    "https://www.wakacje.pl/wczasy/liberty-signa-h61445/?tanio,od-2025-07-14,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
+    "https://www.wakacje.pl/wczasy/liberty-fabay-h41338/?tanio,od-2025-07-14,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"}
   },
   "date_from": "2025-07-01",
   "date_to": "2025-09-30"
