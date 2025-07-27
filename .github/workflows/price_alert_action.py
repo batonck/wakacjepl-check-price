@@ -60,18 +60,18 @@ def send_discord_alert(webhook_url, offer_url, price, catering=None):
     data = {"content": content}
     response = requests.post(webhook_url, json=data)
     if response.status_code == 204:
-        print('Wysłano powiadomienie na Discord!')
+        print('Wysłano powiadomienie na Discord!', flush=True)
     else:
-        print(f'Błąd przy wysyłaniu na Discord: {response.status_code} {response.text}')
+        print(f'Błąd przy wysyłaniu na Discord: {response.status_code} {response.text}', flush=True)
 
 def send_discord_no_offer_alert(webhook_url, offer_url):
     content = f'Brak ofert spełniających kryteria na ten moment. Sprawdź ponownie później.\nLink: {offer_url}'
     data = {"content": content}
     response = requests.post(webhook_url, json=data)
     if response.status_code == 204:
-        print('Wysłano powiadomienie o braku ofert na Discord!')
+        print('Wysłano powiadomienie o braku ofert na Discord!', flush=True)
     else:
-        print(f'Błąd przy wysyłaniu na Discord: {response.status_code} {response.text}')
+        print(f'Błąd przy wysyłaniu na Discord: {response.status_code} {response.text}', flush=True)
 
 def main():
     with open('config.json', 'r', encoding='utf-8') as f:
@@ -89,14 +89,15 @@ def main():
             price = get_price_from_page(url)
             if price is None:
                 send_discord_no_offer_alert(webhook_url, url)
+                print(f'Brak ofert dla {url} ({catering})', flush=True)
                 continue
-            print(f'Aktualna cena dla {url} ({catering}): {price} PLN')
+            print(f'Aktualna cena dla {url} ({catering}): {price} PLN', flush=True)
             if price <= price_limit:
                 send_discord_alert(webhook_url, url, price, catering)
             else:
-                print(f'Cena powyżej progu {price_limit} PLN.')
+                print(f'Cena powyżej progu {price_limit} PLN.', flush=True)
         except Exception as e:
-            print(f'Błąd dla {url}: {e}')
+            print(f'Błąd dla {url}: {e}', flush=True)
 
 if __name__ == '__main__':
     main()
