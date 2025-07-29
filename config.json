@@ -35,7 +35,15 @@
     "https://www.wakacje.pl/wczasy/alkyna-lifestyle-beach-resort-ex-la-grotta-verde-h15420/?od-2025-07-06,do-2025-09-30,samolotem,all-inclusive,tanio&src=fromFilters": {"price_limit": 8000, "catering": "all-inclusive"},
     "https://www.wakacje.pl/wczasy/nirvana-cosmopolitan-ex-kervansaray-lara-h11220/?tanio,od-2025-07-14,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
     "https://www.wakacje.pl/wczasy/liberty-signa-h61445/?tanio,od-2025-07-14,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
-    "https://www.wakacje.pl/wczasy/liberty-fabay-h41338/?tanio,od-2025-07-14,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"}
+    "https://www.wakacje.pl/wczasy/liberty-fabay-h41338/?tanio,od-2025-07-14,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
+    "https://www.wakacje.pl/wczasy/ng-phaselis-bay-h38096/?tanio,od-2025-07-29,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
+    "https://www.wakacje.pl/wczasy/lago-h15695/?tanio,od-2025-07-29,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
+    "https://www.wakacje.pl/wczasy/xo-cape-arnna-h260434/?tanio,od-2025-07-29,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
+    "https://www.wakacje.pl/wczasy/lusso-sorgun-h262089/?tanio,od-2025-07-29,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
+    "https://www.wakacje.pl/wczasy/dream-fun-world-h60739/?tanio,od-2025-07-29,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
+    "https://www.wakacje.pl/wczasy/paloma-finesse-side-h34300/?tanio,od-2025-07-29,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
+    "https://www.wakacje.pl/wczasy/paloma-orenda-resort-h34301/?tanio,od-2025-07-29,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
+    "https://www.wakacje.pl/wczasy/voyage-sorgun-h11716/?tanio,od-2025-07-29,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"}
   },
   "date_from": "2025-07-01",
   "date_to": "2025-09-30"
