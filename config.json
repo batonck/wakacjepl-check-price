@@ -42,7 +42,9 @@
     "https://www.wakacje.pl/wczasy/dream-fun-world-h60739/?tanio,od-2025-07-29,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
     "https://www.wakacje.pl/wczasy/paloma-finesse-side-h34300/?tanio,od-2025-07-29,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
     "https://www.wakacje.pl/wczasy/paloma-orenda-resort-h34301/?tanio,od-2025-07-29,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
-    "https://www.wakacje.pl/wczasy/voyage-sorgun-h11716/?tanio,od-2025-07-29,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"}
+    "https://www.wakacje.pl/wczasy/voyage-sorgun-h11716/?tanio,od-2025-07-29,do-2025-09-30": {"price_limit": 8000, "catering": "all-inclusive"},
+    "https://www.wakacje.pl/wczasy/balmy-beach-resort-kemer-h43691/?od-2025-07-21,do-2025-09-30&src=fromSearch": {"price_limit": 8000, "catering": "all-inclusive"},
+    "https://www.wakacje.pl/wczasy/ostria-beach-resort-spa-h24183/?od-2025-09-30,all-inclusive&src=fromFilters": {"price_limit": 8000, "catering": "all-inclusive"}
   },
   "date_from": "2025-07-01",
   "date_to": "2025-09-30"
