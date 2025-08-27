@@ -1,8 +1,8 @@
 name: WakacjePL Price Alert
 
 on:
-  schedule:
-    - cron: '0 4,7,9,11,12,13,14,15,17,20,22 * * *' # 11 times a day at specified hours UTC
+ # schedule:
+  #  - cron: '0 4,7,9,11,12,13,14,15,17,20,22 * * *' # 11 times a day at specified hours UTC
   workflow_dispatch:
     inputs:
       date_from:
